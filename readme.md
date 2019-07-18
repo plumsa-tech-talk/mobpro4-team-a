@@ -16,11 +16,19 @@ $ git clone {REPOS URL} plumsa-mobpro4
 $ cd plumsa-mobpro4
 ```
 
+## パーミッション調整
+
+```
+$ chmod 777 storage bootstrap/cache
+```
+
+
 ## sqliteのdbを作成
 
 ```
 $ sqlite3 database/database.sqlite
-sqlite > .exit
+sqlite> .table
+sqlite> .exit
 ```
 
 ## envの調整
