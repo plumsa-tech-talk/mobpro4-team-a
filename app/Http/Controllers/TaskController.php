@@ -65,5 +65,26 @@ class TaskController extends Controller
         return $todo;
     }
 
+    public function updateTask(Request $request)
+    {
+        $data = $request->all();
 
+        if (!$user = Auth::user()) {
+            $user_id = 1;
+        } else {
+            $user_id = $user->id;
+        }
+
+        $system_data = [
+            'users_id' => $user_id
+        ];
+
+        $data = array_merge($data, $system_data);
+        $task = Task::find($request->id);
+        $result = $task->fill($data)->save();
+
+        return Response::json([
+            $result->toArray()
+        ], 201);
+    }
 }
