@@ -59,12 +59,15 @@
 </script>
 
 <style lang="scss" scoped>
+ .container {
+    margin-top: 20px;
+ }
  .task-list {
     color:red;
     > .list{
         list-style: none;
         margin-bottom: 5px;
-        & .-addborder{
+        &.-addborder{
             border-bottom: 1px #9e9e9e solid;
             box-shadow: rgba(208, 208, 208, 0.509804) 1px 3px 10px -4px;
         }

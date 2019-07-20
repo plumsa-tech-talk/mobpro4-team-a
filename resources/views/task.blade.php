@@ -20,7 +20,6 @@
 </head>
 <body>
     <div id="app">
-        <task-component></task-component>
         <task-list></task-list>
     </div>
 </body>
