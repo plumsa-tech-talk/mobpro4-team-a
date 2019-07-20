@@ -7,8 +7,11 @@
 
                     <div class="card-body">
                         <ul class="task-list">
-                            <li class='list -addborder' v-for="task in taskList" :key="task.id">
-                                <div class="contents">{{task.contents}}</div>
+                            <li class='list -addborder' v-for="(task, index) in taskList" :key="task.id">
+                                <div class="contents">
+                                    {{task.contents}}
+                                    <button @click="showUpdateInput(index)" class="btn btn-primary">変更</button>
+                                </div>
                             </li>
                         </ul>
                         <ul class="task-list">
@@ -19,6 +22,12 @@
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+                <div v-if="isUpdate" class="card">
+                    <div class="card-body">
+                        <input type="text" v-model="changeTask.contents" />
+                        <button @click="updateTask()" class="btn btn-primary">保存</button>
                     </div>
                 </div>
             </div>
@@ -33,7 +42,9 @@
         data(){
             return {
                 taskList : 'aaaa',
-                newTask: ''
+                newTask: '',
+                isUpdate: false,
+                changeTask: ''
             }
         },
         mounted() {
@@ -53,6 +64,19 @@
 
                 this.newTask = '';
                 this.getTaskList()
+            },
+            showUpdateInput(index) {
+                this.isUpdate = true
+                this.changeTask = this.taskList[index]
+            },
+            async updateTask() {
+                await axios.put('updateTask', {
+                    id: this.changeTask.id,
+                    contents: this.changeTask.contents
+                })
+                .catch(error => console.error())
+
+                this.isUpdate = false
             }
         }
     }
@@ -77,5 +101,3 @@
     }
  }
 </style>
-
-
