@@ -9,8 +9,14 @@
                         <ul class="task-list">
                             <li class='list -addborder' v-for="(task, index) in taskList" :key="task.id">
                                 <div class="contents">
-                                    {{task.contents}}
-                                    <button @click="showUpdateInput(index)" class="btn btn-primary">変更</button>
+                                    <div v-if="!task.isEdit">
+                                        {{task.contents}}
+                                        <button @click="showUpdateInput(index)" class="btn btn-primary">変更</button>
+                                    </div>
+                                    <div v-else>
+                                        <input type="text" v-model="changeTask.contents" />
+                                        <button @click="updateTask()" class="btn btn-primary">変更</button>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -22,12 +28,6 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                </div>
-                <div v-if="isUpdate" class="card">
-                    <div class="card-body">
-                        <input type="text" v-model="changeTask.contents" />
-                        <button @click="updateTask()" class="btn btn-primary">保存</button>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,13 @@
             async getTaskList(){
                  const result= await axios.get('getTaskList')
 
-                 this.taskList = result.data;
+                 this.taskList = result.data.map(row => {
+                     return {
+                         id: row.id,
+                         contents: row.contents,
+                         isEdit: false,
+                     }
+                 });
             },
             async addTask(){
                 const result = await axios.post('addTask', {
@@ -66,8 +72,8 @@
                 this.getTaskList()
             },
             showUpdateInput(index) {
-                this.isUpdate = true
                 this.changeTask = this.taskList[index]
+                this.taskList[index].isEdit = true
             },
             async updateTask() {
                 await axios.put('updateTask', {
@@ -76,7 +82,7 @@
                 })
                 .catch(error => console.error())
 
-                this.isUpdate = false
+                this.getTaskList()
             },
             async deleteTask(task_id){
                 const result = await axios.post('deleteTask', {
