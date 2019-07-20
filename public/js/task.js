@@ -1943,7 +1943,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1998,7 +1997,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('addTask', {
-                  content: this.newTask
+                  contents: this.newTask
                 });
 
               case 2:
@@ -38733,11 +38732,6 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Task Component")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.taskList) +
-                "\n                    "
-            ),
             _c(
               "ul",
               { staticClass: "task-list" },
@@ -38755,31 +38749,48 @@ var render = function() {
               0
             ),
             _vm._v(" "),
-            _vm._m(0)
+            _c("ul", { staticClass: "task-list" }, [
+              _c("li", { staticClass: "list" }, [
+                _c("div", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newTask,
+                        expression: "newTask"
+                      }
+                    ],
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.newTask },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.newTask = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: { click: _vm.addTask }
+                    },
+                    [_vm._v("+タスク追加")]
+                  )
+                ])
+              ])
+            ])
           ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "task-list" }, [
-      _c("li", { staticClass: "list" }, [
-        _c("div", [
-          _c("input", { attrs: { type: "text", name: "" } }),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _vm._v("+タスク追加")
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -51193,8 +51204,8 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/ryo/Documents/Laravel/valet-app/plumsa-mobpro4/resources/js/task.js */"./resources/js/task.js");
-module.exports = __webpack_require__(/*! /Users/ryo/Documents/Laravel/valet-app/plumsa-mobpro4/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/sagatto/Desktop/valet/plumsa-mobpro4/resources/js/task.js */"./resources/js/task.js");
+module.exports = __webpack_require__(/*! /Users/sagatto/Desktop/valet/plumsa-mobpro4/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

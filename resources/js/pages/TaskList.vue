@@ -6,7 +6,6 @@
                     <div class="card-header">Task Component</div>
 
                     <div class="card-body">
-                        {{taskList}}
                         <ul class="task-list">
                             <li class='list -addborder' v-for="task in taskList" :key="task.id">
                                 <div class="contents">{{task.contents}}</div>
@@ -15,8 +14,8 @@
                         <ul class="task-list">
                             <li class='list'>
                                 <div>
-                                    <input type="text" name="">
-                                    <button class="btn btn-primary">+タスク追加</button>
+                                    <input type="text" v-model="newTask">
+                                    <button @click="addTask" class="btn btn-primary">+タスク追加</button>
                                 </div>
                             </li>
                         </ul>
@@ -47,10 +46,9 @@
 
                  this.taskList = result.data;
             },
-            
             async addTask(){
                 const result = await axios.post('addTask', {
-                    content: this.newTask
+                    contents: this.newTask
                 });
 
                 this.newTask = '';
