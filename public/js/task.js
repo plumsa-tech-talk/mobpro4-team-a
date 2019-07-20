@@ -1948,7 +1948,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      taskList: 'aaaa'
+      taskList: 'aaaa',
+      newTask: ''
     };
   },
   mounted: function mounted() {
@@ -1985,6 +1986,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return getTaskList;
+    }(),
+    addTask: function () {
+      var _addTask = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var result;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('addTask', {
+                  content: this.newTask
+                });
+
+              case 2:
+                result = _context2.sent;
+                this.newTask = '';
+                this.getTaskList();
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function addTask() {
+        return _addTask.apply(this, arguments);
+      }
+
+      return addTask;
     }()
   }
 });
@@ -51159,8 +51193,8 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/sagatto/Desktop/valet/plumsa-mobpro4/resources/js/task.js */"./resources/js/task.js");
-module.exports = __webpack_require__(/*! /Users/sagatto/Desktop/valet/plumsa-mobpro4/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/ryo/Documents/Laravel/valet-app/plumsa-mobpro4/resources/js/task.js */"./resources/js/task.js");
+module.exports = __webpack_require__(/*! /Users/ryo/Documents/Laravel/valet-app/plumsa-mobpro4/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
