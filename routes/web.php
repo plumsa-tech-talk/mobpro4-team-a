@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/task', 'TaskController@index')->name('task');
 
+Route::get('/getTaskList', 'TaskController@getTaskList')->name('task');
+
 Route::get('/home', 'HomeController@index')->name('home');
