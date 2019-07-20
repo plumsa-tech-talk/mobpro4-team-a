@@ -11,11 +11,11 @@
                                 <div class="contents">
                                     <div v-if="!task.isEdit">
                                         {{task.contents}}
-                                        <button @click="showUpdateInput(index)" class="btn btn-primary">変更</button>
+                                        <i v-if="!editMode" class="fas fa-pencil-alt" @click="showUpdateInput(index)"></i>
                                     </div>
                                     <div v-else>
                                         <input type="text" v-model="changeTask.contents" />
-                                        <button @click="updateTask()" class="btn btn-primary">変更</button>
+                                        <button @click="updateTask()" class="btn btn-primary">保存</button>
                                     </div>
                                 </div>
                             </li>
@@ -44,7 +44,8 @@
                 taskList : 'aaaa',
                 newTask: '',
                 isUpdate: false,
-                changeTask: ''
+                changeTask: '',
+                editMode: false
             }
         },
         mounted() {
@@ -73,6 +74,7 @@
             },
             showUpdateInput(index) {
                 this.changeTask = this.taskList[index]
+                this.editMode = true
                 this.taskList[index].isEdit = true
             },
             async updateTask() {
@@ -83,6 +85,7 @@
                 .catch(error => console.error())
 
                 this.getTaskList()
+                this.editMode = false
             },
             async deleteTask(task_id){
                 const result = await axios.post('deleteTask', {
@@ -111,6 +114,13 @@
     }
     > .list > .contents{
         color:black;
+    }
+ }
+ .fas{
+    color: #333;
+    cursor: pointer;
+    &:hover{
+        color: blue;
     }
  }
 </style>
