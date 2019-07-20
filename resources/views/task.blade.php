@@ -20,7 +20,7 @@
 </head>
 <body>
     <div id="app">
-        わーお
-        <example-component></example-component>
+        <task-component></task-component>
+        <task-list></task-list>
     </div>
 </body>
