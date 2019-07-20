@@ -76,8 +76,8 @@ class TaskController extends Controller
         $task = Task::find($request->id);
         $result = $task->fill($data)->save();
 
-        return Response::json([
-            $result->toArray()
+        return \Response::json([
+            $result
         ], 201);
     }
 }

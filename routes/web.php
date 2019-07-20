@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/task', 'TaskController@index')->name('task');
 
 Route::post('/addTask', 'TaskController@addTask')->name('task');
+Route::put('/updateTask', 'TaskController@updateTask')->name('task');
 
 Route::get('/getTaskList', 'TaskController@getTaskList')->name('get_task_list');
 
