@@ -53,7 +53,7 @@ class TaskController extends Controller
 
         $result = Task::create(array_merge($data, $system_data));
 
-        return Response::json([
+        return \Response::json([
             $result->toArray()
         ], 201);
     }
