@@ -29,7 +29,7 @@ class TaskSeeder extends Seeder
 
         foreach ($tasks as $task) {
             Task::create([
-                'contents'              => $task[0],
+                'contents'           => $task[0],
                 'users_id'           => $task[1],
             ]);
         }
