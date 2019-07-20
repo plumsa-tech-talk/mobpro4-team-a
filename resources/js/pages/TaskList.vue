@@ -20,7 +20,8 @@
     export default {
         data(){
             return {
-                taskList : 'aaaa'
+                taskList : 'aaaa',
+                newTask: ''
             }
         },
         mounted() {
@@ -32,6 +33,15 @@
                  const result= await axios.get('getTaskList')
 
                  this.taskList = result.data;
+            },
+            
+            async addTask(){
+                const result = await axios.post('addTask', {
+                    content: this.newTask
+                });
+
+                this.newTask = '';
+                this.getTaskList()
             }
         }
     }
