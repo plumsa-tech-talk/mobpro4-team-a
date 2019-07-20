@@ -77,6 +77,13 @@
                 .catch(error => console.error())
 
                 this.isUpdate = false
+            },
+            async deleteTask(task_id){
+                const result = await axios.post('deleteTask', {
+                    id: task_id
+                })
+
+                this.taskList = result.data
             }
         }
     }

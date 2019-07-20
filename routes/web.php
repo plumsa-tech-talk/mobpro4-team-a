@@ -24,4 +24,6 @@ Route::put('/updateTask', 'TaskController@updateTask')->name('task');
 
 Route::get('/getTaskList', 'TaskController@getTaskList')->name('get_task_list');
 
+Route::post('/deleteTask', 'TaskController@deleteTask')->name('delete_task');
+
 Route::get('/home', 'HomeController@index')->name('home');

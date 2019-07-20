@@ -58,6 +58,13 @@ class TaskController extends Controller
         ], 201);
     }
 
+    public function deleteTask(Request $request)
+    {
+        $todo = Task::where('id', $request->id)->delete();
+
+        return $todo;
+    }
+
     public function updateTask(Request $request)
     {
         $data = $request->all();
