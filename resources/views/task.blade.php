@@ -22,7 +22,5 @@
 <body>
     <div id="app">
         <task-list></task-list>
-        <span class="glyphicon glyphicon-search"></span>
-        <i class="fas fa-stroopwafel"></i>
     </div>
 </body>
